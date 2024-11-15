@@ -2,15 +2,13 @@
 {
     public class Calculator
     {
-        public event CalculationHandler? CalculationPerformed;
+        private static double Add(double a, double b) => a + b;
 
-        private double Add(double a, double b) => a + b;
+        private static double Subtract(double a, double b) => a - b;
 
-        private double Subtract(double a, double b) => a - b;
+        private static double Multiply(double a, double b) => a * b;
 
-        private double Multiply(double a, double b) => a * b;
-
-        private double Divide(double a, double b)
+        private static double Divide(double a, double b)
         {
             if (b == 0)
             {
@@ -19,6 +17,8 @@
 
             return a / b;
         }
+
+        public event CalculationHandler? CalculationPerformed;
 
         public double Calculate(double a, double b, CalculatorOperator op)
         {
