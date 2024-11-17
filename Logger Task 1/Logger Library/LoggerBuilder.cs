@@ -4,31 +4,12 @@ namespace Logger_Library
 {
     public class LoggerBuilder
     {
-        public static Logger Create()
+        public static Logger Create(LoggerDestination destination = LoggerDestination.Console) => destination switch
         {
-            return new ConsoleLogger();
-        }
-
-        public static Logger Create(LoggerDestination destination) { 
-            switch (destination)
-            {
-                case LoggerDestination.Console:
-                {
-                    return new ConsoleLogger();
-                }
-                case LoggerDestination.Database:
-                {
-                    return new DatabaseLogger();
-                }
-                case LoggerDestination.TextFile:
-                {
-                    return new TextfileLogger();
-                }
-                default:
-                {
-                    throw new NotImplementedException();
-                }
-            }
-        }
+            LoggerDestination.Console => new ConsoleLogger(),
+            LoggerDestination.Database => new DatabaseLogger(),
+            LoggerDestination.TextFile => new TextfileLogger(),
+            _ => throw new NotImplementedException()
+        };
     }
 }
