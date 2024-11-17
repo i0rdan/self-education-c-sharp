@@ -22,34 +22,14 @@
 
         public double Calculate(double a, double b, CalculatorOperator op)
         {
-            double result;
-            switch (op)
+            double result = op switch
             {
-                case CalculatorOperator.Add:
-                {
-                    result = Add(a, b);
-                    break;
-                }
-                case CalculatorOperator.Subtract:
-                {
-                    result = Subtract(a, b);
-                    break;
-                }
-                case CalculatorOperator.Multiply:
-                {
-                    result = Multiply(a, b);
-                    break;
-                }
-                case CalculatorOperator.Divide:
-                {
-                    result = Divide(a, b);
-                    break;
-                }
-                default:
-                {
-                    throw new NotImplementedException("No such operator!");
-                }
-            }
+                CalculatorOperator.Add => Add(a, b),
+                CalculatorOperator.Subtract => Subtract(a, b),
+                CalculatorOperator.Multiply => Multiply(a, b),
+                CalculatorOperator.Divide => Divide(a, b),
+                _ => throw new NotImplementedException("No such operator!")
+            };
 
             var arg = new CalculatorEventArgs(a, b, result);
             CalculationPerformed?.Invoke(arg);
