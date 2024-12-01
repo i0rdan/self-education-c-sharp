@@ -1,1 +1,1 @@
-# C# Tasks From Internship
+# Self-Education C# Tasks
