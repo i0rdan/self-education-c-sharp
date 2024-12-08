@@ -89,9 +89,12 @@ namespace MyStringBuilder_Library
 
         public void Undo()
         {
-            var command = _commandHistory.Pop();
+            if (_commandHistory.TryPeek(out var command))
+            {
+                _commandHistory.Pop();
 
-            _sb = command.Undo(_sb);
+                _sb = command.Undo(_sb);
+            }
         }
     }
 }
