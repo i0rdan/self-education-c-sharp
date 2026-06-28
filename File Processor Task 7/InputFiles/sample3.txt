@@ -1,0 +1,3 @@
+Searching for words across files
+This demonstrates thread usage
+Each file is processed by a separate thread
